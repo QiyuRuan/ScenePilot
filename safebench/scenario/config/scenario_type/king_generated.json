@@ -1,0 +1,902 @@
+[
+    {
+        "data_id": 0,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 11,
+        "sample_id": 0,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_0_to_0/scenario_records.json"
+    },
+    {
+        "data_id": 1,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 11,
+        "sample_id": 1,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_1_to_1/scenario_records.json"
+    },
+    {
+        "data_id": 2,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 11,
+        "sample_id": 2,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_2_to_2/scenario_records.json"
+    },
+    {
+        "data_id": 3,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 11,
+        "sample_id": 3,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_3_to_3/scenario_records.json"
+    },
+    {
+        "data_id": 4,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 11,
+        "sample_id": 4,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_4_to_4/scenario_records.json"
+    },
+    {
+        "data_id": 5,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 11,
+        "sample_id": 5,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_5_to_5/scenario_records.json"
+    },
+    {
+        "data_id": 6,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 11,
+        "sample_id": 6,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_6_to_6/scenario_records.json"
+    },
+    {
+        "data_id": 7,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 11,
+        "sample_id": 7,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_7_to_7/scenario_records.json"
+    },
+    {
+        "data_id": 8,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 11,
+        "sample_id": 8,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_8_to_8/scenario_records.json"
+    },
+    {
+        "data_id": 9,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 11,
+        "sample_id": 9,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_9_to_9/scenario_records.json"
+    },
+    {
+        "data_id": 10,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 12,
+        "sample_id": 0,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_10_to_10/scenario_records.json"
+    },
+    {
+        "data_id": 11,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 12,
+        "sample_id": 1,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_11_to_11/scenario_records.json"
+    },
+    {
+        "data_id": 12,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 12,
+        "sample_id": 2,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_12_to_12/scenario_records.json"
+    },
+    {
+        "data_id": 13,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 12,
+        "sample_id": 3,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_13_to_13/scenario_records.json"
+    },
+    {
+        "data_id": 14,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 12,
+        "sample_id": 4,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_14_to_14/scenario_records.json"
+    },
+    {
+        "data_id": 15,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 12,
+        "sample_id": 5,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_15_to_15/scenario_records.json"
+    },
+    {
+        "data_id": 16,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 12,
+        "sample_id": 6,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_16_to_16/scenario_records.json"
+    },
+    {
+        "data_id": 17,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 12,
+        "sample_id": 7,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_17_to_17/scenario_records.json"
+    },
+    {
+        "data_id": 18,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 12,
+        "sample_id": 8,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_18_to_18/scenario_records.json"
+    },
+    {
+        "data_id": 19,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 12,
+        "sample_id": 9,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_19_to_19/scenario_records.json"
+    },
+    {
+        "data_id": 20,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 13,
+        "sample_id": 0,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_20_to_20/scenario_records.json"
+    },
+    {
+        "data_id": 21,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 13,
+        "sample_id": 1,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_21_to_21/scenario_records.json"
+    },
+    {
+        "data_id": 22,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 13,
+        "sample_id": 2,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_22_to_22/scenario_records.json"
+    },
+    {
+        "data_id": 23,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 13,
+        "sample_id": 3,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_23_to_23/scenario_records.json"
+    },
+    {
+        "data_id": 24,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 13,
+        "sample_id": 4,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_24_to_24/scenario_records.json"
+    },
+    {
+        "data_id": 25,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 13,
+        "sample_id": 5,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_25_to_25/scenario_records.json"
+    },
+    {
+        "data_id": 26,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 13,
+        "sample_id": 6,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_26_to_26/scenario_records.json"
+    },
+    {
+        "data_id": 27,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 13,
+        "sample_id": 7,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_27_to_27/scenario_records.json"
+    },
+    {
+        "data_id": 28,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 13,
+        "sample_id": 8,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_28_to_28/scenario_records.json"
+    },
+    {
+        "data_id": 29,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 13,
+        "sample_id": 9,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_29_to_29/scenario_records.json"
+    },
+    {
+        "data_id": 30,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 4,
+        "sample_id": 0,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_30_to_30/scenario_records.json"
+    },
+    {
+        "data_id": 31,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 4,
+        "sample_id": 1,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_31_to_31/scenario_records.json"
+    },
+    {
+        "data_id": 32,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 4,
+        "sample_id": 2,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_32_to_32/scenario_records.json"
+    },
+    {
+        "data_id": 33,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 4,
+        "sample_id": 3,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_33_to_33/scenario_records.json"
+    },
+    {
+        "data_id": 34,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 4,
+        "sample_id": 4,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_34_to_34/scenario_records.json"
+    },
+    {
+        "data_id": 35,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 4,
+        "sample_id": 5,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_35_to_35/scenario_records.json"
+    },
+    {
+        "data_id": 36,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 4,
+        "sample_id": 6,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_36_to_36/scenario_records.json"
+    },
+    {
+        "data_id": 37,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 4,
+        "sample_id": 7,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_37_to_37/scenario_records.json"
+    },
+    {
+        "data_id": 38,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 4,
+        "sample_id": 8,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_38_to_38/scenario_records.json"
+    },
+    {
+        "data_id": 39,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 4,
+        "sample_id": 9,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_39_to_39/scenario_records.json"
+    },
+    {
+        "data_id": 40,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 5,
+        "sample_id": 0,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_40_to_40/scenario_records.json"
+    },
+    {
+        "data_id": 41,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 5,
+        "sample_id": 1,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_41_to_41/scenario_records.json"
+    },
+    {
+        "data_id": 42,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 5,
+        "sample_id": 2,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_42_to_42/scenario_records.json"
+    },
+    {
+        "data_id": 43,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 5,
+        "sample_id": 3,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_43_to_43/scenario_records.json"
+    },
+    {
+        "data_id": 44,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 5,
+        "sample_id": 4,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_44_to_44/scenario_records.json"
+    },
+    {
+        "data_id": 45,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 5,
+        "sample_id": 5,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_45_to_45/scenario_records.json"
+    },
+    {
+        "data_id": 46,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 5,
+        "sample_id": 6,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_46_to_46/scenario_records.json"
+    },
+    {
+        "data_id": 47,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 5,
+        "sample_id": 7,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_47_to_47/scenario_records.json"
+    },
+    {
+        "data_id": 48,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 5,
+        "sample_id": 8,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_48_to_48/scenario_records.json"
+    },
+    {
+        "data_id": 49,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 5,
+        "sample_id": 9,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_49_to_49/scenario_records.json"
+    },
+    {
+        "data_id": 50,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 6,
+        "sample_id": 0,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_50_to_50/scenario_records.json"
+    },
+    {
+        "data_id": 51,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 6,
+        "sample_id": 1,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_51_to_51/scenario_records.json"
+    },
+    {
+        "data_id": 52,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 6,
+        "sample_id": 2,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_52_to_52/scenario_records.json"
+    },
+    {
+        "data_id": 53,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 6,
+        "sample_id": 3,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_53_to_53/scenario_records.json"
+    },
+    {
+        "data_id": 54,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 6,
+        "sample_id": 4,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_54_to_54/scenario_records.json"
+    },
+    {
+        "data_id": 55,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 6,
+        "sample_id": 5,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_55_to_55/scenario_records.json"
+    },
+    {
+        "data_id": 56,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 6,
+        "sample_id": 6,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_56_to_56/scenario_records.json"
+    },
+    {
+        "data_id": 57,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 6,
+        "sample_id": 7,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_57_to_57/scenario_records.json"
+    },
+    {
+        "data_id": 58,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 6,
+        "sample_id": 8,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_58_to_58/scenario_records.json"
+    },
+    {
+        "data_id": 59,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 6,
+        "sample_id": 9,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_59_to_59/scenario_records.json"
+    },
+    {
+        "data_id": 60,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 7,
+        "sample_id": 0,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_60_to_60/scenario_records.json"
+    },
+    {
+        "data_id": 61,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 7,
+        "sample_id": 1,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_61_to_61/scenario_records.json"
+    },
+    {
+        "data_id": 62,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 7,
+        "sample_id": 2,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_62_to_62/scenario_records.json"
+    },
+    {
+        "data_id": 63,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 7,
+        "sample_id": 3,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_63_to_63/scenario_records.json"
+    },
+    {
+        "data_id": 64,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 7,
+        "sample_id": 4,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_64_to_64/scenario_records.json"
+    },
+    {
+        "data_id": 65,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 7,
+        "sample_id": 5,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_65_to_65/scenario_records.json"
+    },
+    {
+        "data_id": 66,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 7,
+        "sample_id": 6,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_66_to_66/scenario_records.json"
+    },
+    {
+        "data_id": 67,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 7,
+        "sample_id": 7,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_67_to_67/scenario_records.json"
+    },
+    {
+        "data_id": 68,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 7,
+        "sample_id": 8,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_68_to_68/scenario_records.json"
+    },
+    {
+        "data_id": 69,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 7,
+        "sample_id": 9,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_69_to_69/scenario_records.json"
+    },
+    {
+        "data_id": 70,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 8,
+        "sample_id": 0,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_70_to_70/scenario_records.json"
+    },
+    {
+        "data_id": 71,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 8,
+        "sample_id": 1,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_71_to_71/scenario_records.json"
+    },
+    {
+        "data_id": 72,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 8,
+        "sample_id": 2,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_72_to_72/scenario_records.json"
+    },
+    {
+        "data_id": 73,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 8,
+        "sample_id": 3,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_73_to_73/scenario_records.json"
+    },
+    {
+        "data_id": 74,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 8,
+        "sample_id": 4,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_74_to_74/scenario_records.json"
+    },
+    {
+        "data_id": 75,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 8,
+        "sample_id": 5,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_75_to_75/scenario_records.json"
+    },
+    {
+        "data_id": 76,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 8,
+        "sample_id": 6,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_76_to_76/scenario_records.json"
+    },
+    {
+        "data_id": 77,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 8,
+        "sample_id": 7,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_77_to_77/scenario_records.json"
+    },
+    {
+        "data_id": 78,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 8,
+        "sample_id": 8,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_78_to_78/scenario_records.json"
+    },
+    {
+        "data_id": 79,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 8,
+        "sample_id": 9,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_79_to_79/scenario_records.json"
+    },
+    {
+        "data_id": 80,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 9,
+        "sample_id": 0,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_80_to_80/scenario_records.json"
+    },
+    {
+        "data_id": 81,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 9,
+        "sample_id": 1,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_81_to_81/scenario_records.json"
+    },
+    {
+        "data_id": 82,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 9,
+        "sample_id": 2,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_82_to_82/scenario_records.json"
+    },
+    {
+        "data_id": 83,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 9,
+        "sample_id": 3,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_83_to_83/scenario_records.json"
+    },
+    {
+        "data_id": 84,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 9,
+        "sample_id": 4,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_84_to_84/scenario_records.json"
+    },
+    {
+        "data_id": 85,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 9,
+        "sample_id": 5,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_85_to_85/scenario_records.json"
+    },
+    {
+        "data_id": 86,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 9,
+        "sample_id": 6,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_86_to_86/scenario_records.json"
+    },
+    {
+        "data_id": 87,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 9,
+        "sample_id": 7,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_87_to_87/scenario_records.json"
+    },
+    {
+        "data_id": 88,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 9,
+        "sample_id": 8,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_88_to_88/scenario_records.json"
+    },
+    {
+        "data_id": 89,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 9,
+        "sample_id": 9,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_89_to_89/scenario_records.json"
+    },
+    {
+        "data_id": 90,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 10,
+        "sample_id": 0,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_90_to_90/scenario_records.json"
+    },
+    {
+        "data_id": 91,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 10,
+        "sample_id": 1,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_91_to_91/scenario_records.json"
+    },
+    {
+        "data_id": 92,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 10,
+        "sample_id": 2,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_92_to_92/scenario_records.json"
+    },
+    {
+        "data_id": 93,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 10,
+        "sample_id": 3,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_93_to_93/scenario_records.json"
+    },
+    {
+        "data_id": 94,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 10,
+        "sample_id": 4,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_94_to_94/scenario_records.json"
+    },
+    {
+        "data_id": 95,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 10,
+        "sample_id": 5,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_95_to_95/scenario_records.json"
+    },
+    {
+        "data_id": 96,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 10,
+        "sample_id": 6,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_96_to_96/scenario_records.json"
+    },
+    {
+        "data_id": 97,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 10,
+        "sample_id": 7,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_97_to_97/scenario_records.json"
+    },
+    {
+        "data_id": 98,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 10,
+        "sample_id": 8,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_98_to_98/scenario_records.json"
+    },
+    {
+        "data_id": 99,
+        "scenario_folder": "adv_behavior_single",
+        "scenario_id": 6,
+        "route_id": 10,
+        "sample_id": 9,
+        "risk_level": null,
+        "parameters": "safebench/scenario/scenario_data/king_outputs/RouteScenario_99_to_99/scenario_records.json"
+    }
+]

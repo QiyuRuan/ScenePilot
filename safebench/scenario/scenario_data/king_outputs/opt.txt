@@ -1,0 +1,116 @@
+====== Options ======
+adv_col_thresh: 1.25
+batch_size: 1
+beta1: 0.8
+beta2: 0.99
+detach_ego_path: 1
+device: cuda:0
+ego_agent: aim-bev
+ego_agent_ckpt: driving_agents/king/aim_bev/model_checkpoints/regular
+gradient_clip: 0.0
+init_root: driving_agents/king/aim_bev/king_initializations/initializations_subset/
+king_data_fps: 2
+learning_rate: 0.005
+max_num_routes: -1
+num_agents: 1
+opt_iters: 100
+port: 3000
+renderer_class: STN
+routes_file: safebench/scenario/scenario_data/king_bridge/routes_for_king.xml
+routes_file_adv: data/routes/adv_all.xml
+save_path: safebench/scenario/scenario_data/king_outputs
+seed: 0
+sim_horizon: 80
+sim_tickrate: 4
+w_adv_col: 3.0
+w_adv_rd: 20.0
+w_ego_col: 1.0
+=====================
+launched at 2026-03-28 15:11:22.932286
+====== Options ======
+adv_col_thresh: 1.25
+batch_size: 1
+beta1: 0.8
+beta2: 0.99
+detach_ego_path: 1
+device: cuda:0
+ego_agent: aim-bev
+ego_agent_ckpt: driving_agents/king/aim_bev/model_checkpoints/regular
+gradient_clip: 0.0
+init_root: driving_agents/king/aim_bev/king_initializations/initializations_subset/
+king_data_fps: 2
+learning_rate: 0.005
+max_num_routes: -1
+num_agents: 1
+opt_iters: 100
+port: 3000
+renderer_class: STN
+routes_file: safebench/scenario/scenario_data/king_bridge/routes_for_king.xml
+routes_file_adv: data/routes/adv_all.xml
+save_path: safebench/scenario/scenario_data/king_outputs
+seed: 0
+sim_horizon: 80
+sim_tickrate: 4
+w_adv_col: 3.0
+w_adv_rd: 20.0
+w_ego_col: 1.0
+=====================
+launched at 2026-03-28 15:12:31.363999
+====== Options ======
+adv_col_thresh: 1.25
+batch_size: 1
+beta1: 0.8
+beta2: 0.99
+detach_ego_path: 1
+device: cuda:0
+ego_agent: aim-bev
+ego_agent_ckpt: driving_agents/king/aim_bev/model_checkpoints/regular
+gradient_clip: 0.0
+init_root: driving_agents/king/aim_bev/king_initializations/initializations_subset/
+king_data_fps: 2
+learning_rate: 0.005
+max_num_routes: -1
+num_agents: 1
+opt_iters: 100
+port: 3000
+renderer_class: STN
+routes_file: safebench/scenario/scenario_data/king_bridge/routes_for_king.xml
+routes_file_adv: data/routes/adv_all.xml
+save_path: safebench/scenario/scenario_data/king_outputs
+seed: 0
+sim_horizon: 80
+sim_tickrate: 4
+w_adv_col: 3.0
+w_adv_rd: 20.0
+w_ego_col: 1.0
+=====================
+launched at 2026-03-28 15:29:03.785452
+====== Options ======
+adv_col_thresh: 1.25
+batch_size: 1
+beta1: 0.8
+beta2: 0.99
+detach_ego_path: 1
+device: cuda:0
+ego_agent: aim-bev
+ego_agent_ckpt: driving_agents/king/aim_bev/model_checkpoints/regular
+gradient_clip: 0.0
+init_root: driving_agents/king/aim_bev/king_initializations/initializations_subset/
+king_data_fps: 2
+learning_rate: 0.005
+max_num_routes: -1
+num_agents: 1
+opt_iters: 100
+port: 3000
+renderer_class: STN
+routes_file: safebench/scenario/scenario_data/king_bridge/routes_for_king.xml
+routes_file_adv: data/routes/adv_all.xml
+save_path: safebench/scenario/scenario_data/king_outputs
+seed: 0
+sim_horizon: 80
+sim_tickrate: 4
+w_adv_col: 3.0
+w_adv_rd: 20.0
+w_ego_col: 1.0
+=====================
+launched at 2026-03-28 15:47:27.687169

@@ -1,0 +1,53 @@
+scenario_type_dir: 'safebench/scenario/config/scenario_type'
+# scenario_type: 'train_av.json'
+scenario_type: 'eval_gen.json'
+# scenario_type: 'scenario_gen.json'
+# scenario_type: 'test_av.json'
+
+scenario_category: 'planning'
+policy_type: 'scenepilot'
+
+route_dir: 'safebench/scenario/scenario_data/route'
+scenario_id: 6
+bv_num: 0
+# Routes 4-13 are CARLA maps; routes 0-3 are SafeBench maps.
+route_id: null
+
+# parameters for agent policy
+ego_action_dim: 2
+ego_state_dim: 4
+ego_action_limit: 1.0
+
+# parameters for scenario policy
+# for scenario id 1,3,4
+# scenario_state_dim: 27 # 3*9 - actor number * actor info dim
+# scenario_action_dim: 1
+
+# for scenario id 8
+scenario_state_dim: 18 # 2*9 - actor number * actor info dim
+scenario_action_dim: 1
+
+# for ScenePilot policy model
+model_path: 'safebench/scenario/scenario_data/model_ckpt/scenepilot/'
+model_id: 1
+
+train_episode: 3000
+eval_in_train_freq: 1
+save_freq: 1
+buffer_capacity: 3000
+
+
+scenepilot:
+  gamma: 0.99
+  gae_lambda: 0.95
+  thresh_update_every: 100
+  lr: 1.0e-4
+  ppo_clip: 0.25
+  k_values: [0.0, 0.02, 0.05, 0.09, 0.14, 0.2, 0.27, 0.35]
+  feas_tol: 0.00
+  ipo:
+    mu: 1.0
+    mu_decay: 0.999
+    batch_size: 2048
+    ppo_epochs: 1
+    entropy_coef: 0.03

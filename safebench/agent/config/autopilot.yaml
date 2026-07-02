@@ -1,0 +1,8 @@
+policy_type: 'autopilot'
+model_path: ''
+
+# 0 for low-dimensional state observation
+obs_type: 0
+
+# Whether to draw expert route in CARLA debug view.
+viz_route: false
