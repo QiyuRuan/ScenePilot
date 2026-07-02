@@ -2,7 +2,7 @@
 
 ScenePilot is a CARLA-based safety-critical autonomous driving project built on top of the SafeBench codebase. It trains and evaluates adversarial scenario policies that generate challenging traffic interactions for an ego autonomous vehicle. The project adds ScenePilot scenario-policy training, AV-safe risk estimation, physical-safety reward shaping, multi-route training scripts, and evaluation utilities.
 
-Note: this repository is still under active revision. Some paths, variable names, scripts, configs, or generated data may not yet be fully aligned with the new ScenePilot layout, so minor bugs may still exist.
+Note: this repository is still **under revision**. Some paths, variable names, scripts, configs, or generated data may not yet be fully aligned with the new ScenePilot layout, so minor bugs may still exist.
 
 ## Project Structure
 
@@ -53,18 +53,15 @@ This is commonly required by CARLA on Linux.
 
 ### Step 4: Download CARLA 0.9.13
 
-Download CARLA 0.9.13 and extract it to a local folder.
+Download [CARLA 0.9.13_safebench] {https://drive.google.com/file/d/139vLRgXP90Zk6Q_du9cRdOLx7GJIw_0v/view} and extract it to a local folder.
 
-```bash
-export CARLA_ROOT=/path/to/CARLA_0.9.13
-```
 
 ### Step 5: Add CARLA Python API paths
 
 Add the following lines to `~/.bashrc` or run them in every terminal before starting experiments:
 
 ```bash
-export CARLA_ROOT=/path/to/CARLA_0.9.13
+export CARLA_ROOT=~/CARLA/CARLA_0.9.13_safebench
 export PYTHONPATH=$PYTHONPATH:${CARLA_ROOT}/PythonAPI/carla/dist/carla-0.9.13-py3.8-linux-x86_64.egg
 export PYTHONPATH=$PYTHONPATH:${CARLA_ROOT}/PythonAPI/carla/agents
 export PYTHONPATH=$PYTHONPATH:${CARLA_ROOT}/PythonAPI/carla
