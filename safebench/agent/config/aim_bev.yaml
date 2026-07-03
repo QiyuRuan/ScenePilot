@@ -1,0 +1,12 @@
+policy_type: "aim_bev"
+
+# Keep birdview mode for compatibility with current SafeBench pipeline.
+obs_type: 2
+
+# Relative to ROOT_DIR.
+aim_bev_ckpt_dir: "safebench/agent/model_ckpt/aim_bev/regular"
+
+# Optional overrides; defaults will be read from args.txt when available.
+pred_len: 4
+seq_len: 1
+detection_radius: 30.0

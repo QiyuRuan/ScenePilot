@@ -1,0 +1,15 @@
+policy_type: "transfuser"
+
+# Dedicated observation branch for TransFuser: camera + raw lidar points + state.
+obs_type: 4
+
+# TransFuser needs lidar enabled.
+disable_lidar: false
+
+# Relative to ROOT_DIR.
+transfuser_ckpt_dir: "safebench/agent/model_ckpt/transfuser/regular/transfuser"
+
+# Optional overrides.
+transfuser_input_resolution: 256
+transfuser_seq_len: 1
+transfuser_pred_len: 4

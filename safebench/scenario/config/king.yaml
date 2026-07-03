@@ -1,0 +1,69 @@
+scenario_type_dir: 'safebench/scenario/config/scenario_type'
+scenario_type: 'king_generated.json'
+scenario_category: 'planning'
+policy_type: 'king'
+
+route_dir: 'safebench/scenario/scenario_data/route'
+scenario_id: null
+route_id: null
+
+# KING generation trigger behavior:
+# - train_scenario: generate/index adversarial trajectories
+# - eval: replay generated trajectories by default
+king_auto_generate_on_train: true
+king_auto_generate_on_eval: false
+
+king_force_regenerate: true
+king_train_scenario_only_generate: true
+
+king_source_scenario_json: 'safebench/scenario/config/scenario_type/scenario_gen.json'
+king_root: 'safebench/king'
+king_output_dir: 'safebench/scenario/scenario_data/king_outputs'
+king_work_dir: 'safebench/scenario/scenario_data/king_bridge'
+king_run_mode: 'inprocess'   # 'inprocess' or 'subprocess'
+king_skip_generation: false
+
+# If true, generation-side ego policy is auto-mapped from current SafeBench agent_cfg.
+king_follow_safebench_agent: true
+
+# KING generation hyper-parameters
+king_samples_per_route: 10
+king_num_agents: 1
+king_opt_iters: 100
+king_learning_rate: 0.005
+king_beta1: 0.8
+king_beta2: 0.99
+king_w_ego_col: 1.0
+king_w_adv_col: 3.0
+king_w_adv_rd: 20.0
+king_sim_horizon: 80
+# Fallback when king_follow_safebench_agent=false or mapping fails.
+king_ego_agent: 'aim-bev'
+king_default_ego_agent: 'aim-bev'
+king_ego_agent_ckpt: 'driving_agents/king/aim_bev/model_checkpoints/regular'
+king_detach_ego_path: 1
+
+# Optional renderer/init overrides used by auto-mapping.
+king_renderer_class: 'STN'
+king_renderer_class_for_aim_bev: 'STN'
+king_renderer_class_for_transfuser: 'CARLA'
+king_renderer_class_for_expert: 'STN'
+king_init_root: 'driving_agents/king/aim_bev/king_initializations/initializations_subset/'
+king_init_root_for_aim_bev: 'driving_agents/king/aim_bev/king_initializations/initializations_subset/'
+king_init_root_for_transfuser: 'driving_agents/king/transfuser/king_initializations/initializations_subset'
+king_init_root_for_expert: 'driving_agents/king/aim_bev/king_initializations/initializations_subset/'
+
+ego_action_dim: 2
+ego_state_dim: 4
+ego_action_limit: 1.0
+
+# Optional base path for relative parameters; keep empty when parameters are ROOT_DIR-relative.
+model_path: ''
+
+# KING replay options
+king_agent_index: 0
+king_opt_iter: -1
+king_action_mode: 'throttle_minus_brake'
+king_default_action: 0.0
+
+save_freq: 10

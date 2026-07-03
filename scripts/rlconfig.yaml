@@ -1,0 +1,66 @@
+# =======================================================================
+# Basic physical limits (Phys-safe) ------------------------------------------------
+# =======================================================================
+phys_safe:
+  # Maximum longitudinal deceleration   a_lon,max   (m/s^2)
+  a_lon_dec_av:   3.0            # Ego / AV
+  a_lon_dec_npc:  4.0            # NPC
+  # Maximum lateral deceleration   a_lat,max   (m/s^2)
+  a_lat_dec_av:   2.0            # Ego / AV
+  a_lat_dec_npc:  1.5
+  # Numerical safety epsilon     EPS
+  eps:            1.0e-1
+  INF_DIST:       10000     # 10 km is far beyond the CARLA map scale
+  # Yaw classification thresholds (deg)
+  th_same_dir:    30             # |Δyaw| <=  30 deg   -> same direction
+  th_oppo_dir:    150            # |Δyaw| >=  150 deg  -> opposite direction
+  # Minimum buffer for lateral safety distance (m)
+  min_lat_safe:   0.30
+  
+  p_norm:         2       # p-norm, matching p in the slides
+  ttc_eps:        1.0e-4  # Stability term to avoid division by zero
+
+
+# =======================================================================
+# AV-safe solver ------------------------------------------------------------
+# =======================================================================
+av_safe:
+  enable: true        # Set to false to disable AV-safe completely.
+  training: false     # true: Continue training after loading ckpt; starts fresh if no ckpt exists. false means inference only and requires ckpt.
+  ckpt:  "safebench/scenario/scenario_data/model_ckpt/av_safe/avsafe.pt"  # Checkpoint file to save/load
+  in_dim: 6        # Matches risk_feature below
+  lr: 1e-3
+  gamma: 0.95
+  update_gap: 100
+  tau: 0.01
+  W_av: 0.4        # Reward weight in the final stage
+  risk_penalty: 1.0  # Apply -penalty when risk > 0.8
+  eps_loss: 1e-2  # Smooth loss term to avoid gradient explosion
+  k_inv_d: 1        # Adjust AV-safe contraction range; increase to widen, decrease to narrow.
+
+
+
+# =======================================================================
+# ADV reward parameters -----------------------------------------------------
+# =======================================================================
+adv_reward:
+  w_ttc:          2            # TTC weight
+  w_headway:      0.2            # Headway weight
+  ttc_horizon:    2.5            # s, values at or below this time are high risk
+  desired_headway: 1.8           # s, recommended following headway
+
+
+
+# =======================================================================
+# NPC risk shaping -----------------------------------------------------------
+# =======================================================================
+npc_reward:
+  w_risk:        1.0
+  w_delta_dis:   0.1    # Goal-progress shaping
+  w_reach_goal:  0.1    # Small bonus for reaching the goal
+  w_offroad:     0    # Penalty for going off-road
+  w_non_ego:     0  # Penalty for collision with non-ego actors
+  w_smooth:      0  # Penalty for unsmooth actions
+  w_steer:       1  # Penalty for large steering
+  goal_point_radius: 2
+
