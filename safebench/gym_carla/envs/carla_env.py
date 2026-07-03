@@ -96,6 +96,10 @@ class CarlaEnv(gym.Env):
         self.lidar_data = None
         self.lidar_height = 2.1
 
+        # NPC collision sensors used by steer-specific non-ego collision shaping.
+        self._npc_collision_non_ego = {}
+        self._npc_collision_sensors = []
+
         
         # scenario manager
         use_scenic = True if  env_params['scenario_category'] == 'scenic' else False
@@ -294,6 +298,7 @@ class CarlaEnv(gym.Env):
         self._run_scenario(scenario_init_action)
 
         self._attach_sensor()
+        self._attach_npc_collision_sensors()
 
         self._latest_feat = None          # Used by AV-safe TD-0
         if not self.route_level_avsafe_training:
@@ -375,6 +380,37 @@ class CarlaEnv(gym.Env):
             array = array[:, :, :3]
             array = array[:, :, ::-1]
             self.camera_img = array
+
+    def _attach_npc_collision_sensors(self):
+        for sensor in self._npc_collision_sensors:
+            try:
+                sensor.stop()
+                sensor.destroy()
+            except Exception:
+                pass
+        self._npc_collision_sensors = []
+        self._npc_collision_non_ego = {}
+
+        actor_list = self.world.get_actors().filter('vehicle.*')
+        for npc in actor_list:
+            if self.ego_vehicle is not None and npc.id == self.ego_vehicle.id:
+                continue
+
+            self._npc_collision_non_ego[npc.id] = False
+            sensor = self.world.spawn_actor(self.collision_bp, carla.Transform(), attach_to=npc)
+
+            def _make_cb(npc_id):
+                def _on_collision(event):
+                    other = event.other_actor
+                    if self.ego_vehicle is not None and other.id == self.ego_vehicle.id:
+                        return
+                    if 'sensor.' in other.type_id:
+                        return
+                    self._npc_collision_non_ego[npc_id] = True
+                return _on_collision
+
+            sensor.listen(_make_cb(npc.id))
+            self._npc_collision_sensors.append(sensor)
 
 
 
@@ -561,6 +597,48 @@ class CarlaEnv(gym.Env):
 
         # info from scenarios
         info.update(self.scenario_manager.background_scenario.update_info())
+
+        actor_info = info.get('actor_info', None)
+        if actor_info is not None:
+            actor_info = np.asarray(actor_info, dtype=np.float32)
+
+            if self.npc_goal_waypoint is not None:
+                goal_loc = self.npc_goal_waypoint.transform.location
+                goal_xy = np.array([goal_loc.x, goal_loc.y], dtype=np.float32)
+                pos_xy = actor_info[:, :2]
+                dxdy = goal_xy - pos_xy
+                dist = np.linalg.norm(dxdy, axis=1, keepdims=True)
+            else:
+                dxdy = np.zeros((actor_info.shape[0], 2), dtype=np.float32)
+                dist = np.zeros((actor_info.shape[0], 1), dtype=np.float32)
+
+            if actor_info.shape[0] > 0:
+                dxdy[0] = 0.0
+                dist[0] = 0.0
+
+            delta_yaws = []
+            carla_map = self.world.get_map()
+            for row in actor_info:
+                x, y = float(row[0]), float(row[1])
+                try:
+                    wp = carla_map.get_waypoint(carla.Location(x=x, y=y, z=0.0), project_to_road=True)
+                    if wp is not None:
+                        lane_yaw = wp.transform.rotation.yaw / 180 * np.pi
+                        w_vec = np.array([np.cos(lane_yaw), np.sin(lane_yaw)], dtype=np.float32)
+                        yaw = float(row[2])
+                        yaw_vec = np.array([np.cos(yaw), np.sin(yaw)], dtype=np.float32)
+                        cross = float(np.cross(w_vec, yaw_vec))
+                        delta_yaw = float(np.arcsin(np.clip(cross, -1.0, 1.0)))
+                    else:
+                        delta_yaw = 0.0
+                except Exception:
+                    delta_yaw = 0.0
+                delta_yaws.append([delta_yaw])
+            delta_yaws = np.asarray(delta_yaws, dtype=np.float32)
+            if delta_yaws.shape[0] > 0:
+                delta_yaws[0] = 0.0
+
+            info['actor_info'] = np.concatenate([actor_info, dxdy, dist, delta_yaws], axis=1)
         return info
 
 
@@ -1240,6 +1318,38 @@ class CarlaEnv(gym.Env):
     #     risk  = av_safe.risk(feat)
     #     return risk
 
+    def _get_npc_goal_reward(self, npc):
+        if self.npc_goal_waypoint is None:
+            return 0.0, 1e6
+
+        npc_loc = npc.get_transform().location
+        goal_loc = self.npc_goal_waypoint.transform.location
+        dist = npc_loc.distance(goal_loc)
+
+        last_dist = self._npc_goal_dist.get(npc.id, dist)
+        delta_dis = np.clip(last_dist - dist, -1.0, 1.0)
+        self._npc_goal_dist[npc.id] = dist
+        return float(delta_dis), float(dist)
+
+    def _get_npc_offroad_penalty(self, npc):
+        loc = npc.get_transform().location
+        wp = self.world.get_map().get_waypoint(loc, project_to_road=False)
+        if wp is None:
+            return -1.0
+        return 0.0
+
+    def _get_npc_non_ego_collision_penalty(self, npc):
+        if npc is None:
+            return 0.0
+        collided = self._npc_collision_non_ego.get(npc.id, False)
+        return -1.0 if collided else 0.0
+
+    def _get_npc_smooth_penalty(self, npc):
+        ang = npc.get_angular_velocity()
+        yaw_rate = abs(ang.z)
+        yaw_ref = 0.5
+        return -min(1.0, yaw_rate / yaw_ref)
+
     
 
     def _get_av_safe(self):
@@ -1278,14 +1388,44 @@ class CarlaEnv(gym.Env):
             return npc_moreward
 
         risk = float(self._get_av_safe())
+        delta_dis, _ = self._get_npc_goal_reward(npc)
+        non_ego_penalty = self._get_npc_non_ego_collision_penalty(npc)
+
+        npc_cfg = self.rl_config.get('npc_reward', {})
+        w_risk = npc_cfg.get('w_risk', 0.6)
+        w_delta_dis = npc_cfg.get('w_delta_dis', 0.1)
+        w_non_ego = npc_cfg.get('w_non_ego', 0.2)
+        w_lat = npc_cfg.get('w_lat', 0.1)
+        lat_scale = float(npc_cfg.get('lat_scale', 0.5))
+
+        lateral_reward = 0.0
+        try:
+            npc_loc = npc.get_transform().location
+            ego_tf = self.ego_vehicle.get_transform()
+            ego_loc = ego_tf.location
+            ego_yaw = ego_tf.rotation.yaw / 180 * np.pi
+            normal = np.array([-np.sin(ego_yaw), np.cos(ego_yaw)], dtype=np.float32)
+            rel = np.array([npc_loc.x - ego_loc.x, npc_loc.y - ego_loc.y], dtype=np.float32)
+            lat = float(np.dot(rel, normal))
+            lateral_reward = float(np.exp(-abs(lat) / max(lat_scale, 1e-3)))
+        except Exception:
+            lateral_reward = 0.0
+
+        risk_shaped = (
+            w_risk * risk +
+            w_delta_dis * delta_dis +
+            w_lat * lateral_reward +
+            w_non_ego * (non_ego_penalty + 1)
+        )
+        risk_shaped = float(np.clip(risk_shaped, 0.0, 1.0))
 
         # if sigma is None or sigma < 0.0:
         if sigma is None:
-            npc_moreward = np.array([risk, -1], dtype=np.float32)  
+            npc_moreward = np.array([risk_shaped, -1], dtype=np.float32)
         else:
             # sigma always 1, so it signal is low
             sigma = float(sigma)
-            npc_moreward = np.array([risk, sigma], dtype=np.float32)
+            npc_moreward = np.array([risk_shaped, sigma], dtype=np.float32)
 
         sigma_str = f"{sigma:.3f}" if sigma is not None else "NaN"
         np_str = f"{1-sigma:.3f}" if sigma is not None else "NaN"
@@ -1315,6 +1455,15 @@ class CarlaEnv(gym.Env):
             self.camera_sensor.stop()
             self.camera_sensor.destroy()
             self.camera_sensor = None
+
+        for sensor in self._npc_collision_sensors:
+            try:
+                sensor.stop()
+                sensor.destroy()
+            except Exception:
+                pass
+        self._npc_collision_sensors = []
+        self._npc_collision_non_ego = {}
 
 
 

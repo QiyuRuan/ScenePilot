@@ -43,47 +43,40 @@ class OtherLeadingVehicle(BasicScenario):
 
         self.dece_distance = 5
         self.need_decelerate = False
+        self._ego_passed_first = False
 
         self.scenario_operation = ScenarioOperation()
         self.trigger_distance_threshold = 35
 
-        self.acc_max = 3.0          # Maximum longitudinal acceleration (m/s^2)
-        self.steering_max = 0.2    # Maximum steering angle in radians
+        self.acc_max = 3.0
+        self.steering_max = 0.35
 
     def convert_actions(self, actions):
         """
-        actions: [acc, steer], from ScenePilot, roughly in [-1, 1]
+        actions: [acc, steer], from ScenePilot, roughly in [-1, 1].
         Returns: carla.VehicleControl
         """
-        # 1) Unpack action
-        acc   = float(actions[0])   # Normalized longitudinal acceleration
-        steer = float(actions[1])   # Normalized steering
+        acc = float(actions[0]) * self.acc_max
+        steer = float(actions[1]) * self.steering_max
 
-        # 2) Scale to physical range and clip
-        acc   = acc * self.acc_max
-        steer = steer * self.steering_max
-
-        acc   = max(-self.acc_max,      min(self.acc_max,      acc))
+        acc = max(-self.acc_max, min(self.acc_max, acc))
         steer = max(-self.steering_max, min(self.steering_max, steer))
 
-        # 3) Map acceleration to throttle/brake
         if acc > 0:
             throttle = np.clip(acc / 3.0, 0.0, 1.0)
-            brake    = 0.0
-            reverse  = False
+            brake = 0.0
+            reverse = False
         else:
-            # Keep reverse disabled; negative acceleration maps to brake.
             throttle = 0.0
-            brake    = np.clip(-acc / 8.0, 0.0, 1.0)
-            reverse  = False
+            brake = np.clip(-acc / 8.0, 0.0, 1.0)
+            reverse = False
 
-        control = carla.VehicleControl(
+        return carla.VehicleControl(
             throttle=float(throttle),
             steer=float(steer),
             brake=float(brake),
             reverse=reverse
         )
-        return control
 
     def initialize_actors(self):
         first_vehicle_waypoint, _ = get_waypoint_in_distance(self._reference_waypoint, self._first_vehicle_location)
@@ -102,14 +95,12 @@ class OtherLeadingVehicle(BasicScenario):
         self._first_vehicle_location = 35
         self._second_vehicle_location = self._first_vehicle_location + 2.5
         _first_vehicle_speed = 12
-        _second_vehicle_speed = 12
+        _second_vehicle_speed = 10.5
         self.other_actor_speed = [_first_vehicle_speed, _second_vehicle_speed]
 
     def update_behavior(self, scenario_action):
-        # RL action controls the lead vehicle (index 0) during deceleration.
         control_decel = self.convert_actions(scenario_action)
 
-        # Compute the lead vehicle's distance to the trigger point, preserving existing logic.
         cur_distance = calculate_distance_transforms(
             self.actor_transform_list[0],
             CarlaDataProvider.get_transform(self.other_actors[0])
@@ -117,16 +108,37 @@ class OtherLeadingVehicle(BasicScenario):
         if cur_distance > self.dece_distance:
             self.need_decelerate = True
 
-        # --- Lead vehicle: choose fixed speed or RL control based on need_decelerate. ---
         if self.need_decelerate:
-            # During deceleration, control the lead vehicle with RL output, allowing slight lane-preserving steer.
             self.other_actors[0].apply_control(control_decel)
         else:
-            # Before the trigger point, keep driving straight at the configured speed.
             self.scenario_operation.go_straight(self.other_actor_speed[0], 0)
 
-        # --- Second vehicle: always drives straight at the configured speed as background traffic. ---
-        self.scenario_operation.go_straight(self.other_actor_speed[1], 1)
+        if not self._ego_passed_first:
+            ego_tf = CarlaDataProvider.get_transform(self.ego_vehicle)
+            first_tf = CarlaDataProvider.get_transform(self.other_actors[0])
+            if ego_tf is not None and first_tf is not None:
+                ego_loc = ego_tf.location
+                first_loc = first_tf.location
+                try:
+                    wp = self._map.get_waypoint(ego_loc, project_to_road=True)
+                    if wp is not None:
+                        lane_yaw = wp.transform.rotation.yaw / 180 * np.pi
+                        lane_dir = np.array([np.cos(lane_yaw), np.sin(lane_yaw)], dtype=np.float32)
+                        rel = np.array([first_loc.x - ego_loc.x, first_loc.y - ego_loc.y], dtype=np.float32)
+                        if float(np.dot(rel, lane_dir)) < -1.0:
+                            self._ego_passed_first = True
+                    else:
+                        fwd = ego_tf.get_forward_vector()
+                        rel = np.array([first_loc.x - ego_loc.x, first_loc.y - ego_loc.y], dtype=np.float32)
+                        if float(rel[0] * fwd.x + rel[1] * fwd.y) < -1.0:
+                            self._ego_passed_first = True
+                except Exception:
+                    pass
+
+        if self._ego_passed_first:
+            self.other_actors[1].apply_control(control_decel)
+        else:
+            self.scenario_operation.go_straight(self.other_actor_speed[1], 1)
 
 
     def check_stop_condition(self):

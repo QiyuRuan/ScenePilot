@@ -2,8 +2,6 @@
 
 ScenePilot is a CARLA-based safety-critical autonomous driving project built on top of the SafeBench codebase. It trains and evaluates adversarial scenario policies that generate challenging traffic interactions for an ego autonomous vehicle. The project adds ScenePilot scenario-policy training, AV-safe risk estimation, physical-safety reward shaping, multi-route training scripts, and evaluation utilities.
 
-Note: this repository is still **under revision**. Some paths, variable names, scripts, configs, or generated data may not yet be fully aligned with the new ScenePilot layout, so minor bugs may still exist.
-
 ## Project Structure
 
 ```text
@@ -43,7 +41,7 @@ export PYTHONPATH="$PWD:$PYTHONPATH"
 
 There is no `setup.py` in this copy of the project, so `PYTHONPATH` is the recommended way to make the `safebench` package importable.
 
-### Step 3: Install system dependencies
+### Step 3: Install system dependencies for CARLA
 
 ```bash
 sudo apt install libomp5
@@ -53,7 +51,7 @@ This is commonly required by CARLA on Linux.
 
 ### Step 4: Download CARLA 0.9.13
 
-Download [CARLA 0.9.13_safebench] {https://drive.google.com/file/d/139vLRgXP90Zk6Q_du9cRdOLx7GJIw_0v/view} and extract it to a local folder.
+Download [CARLA 0.9.13_safebench](https://drive.google.com/file/d/139vLRgXP90Zk6Q_du9cRdOLx7GJIw_0v/view) and extract it to a local folder.
 
 
 ### Step 5: Add CARLA Python API paths
@@ -107,10 +105,46 @@ This starts CARLA on ports `3000`, `3004`, and so on. Match the training script 
 - Reward and AV-safe config: `scripts/rlconfig.yaml`
 - ScenePilot checkpoints: `safebench/scenario/scenario_data/model_ckpt/scenepilot/`
 
-Routes `4-13` are CARLA maps. Routes `0-3` are SafeBench maps.
+Routes `4-13` are CARLA maps. Routes `0-3` are SafeBench own maps.
 
 When changing the scenario id, check `safebench/scenario/config/scenepilot.yaml`. Some scenarios use different `scenario_state_dim` and `scenario_action_dim` values.
 
+## Supported Ego-Agent Configs
+
+The ego-agent configuration is selected with `--agent_cfg`. Common options are:
+
+- `autopilot.yaml`: Expert autopilot baseline using CARLA Traffic Manager.
+- `chatscene.yaml`: RL ego-agent configuration for SAC, PPO, and TD3 baselines, using pretrained checkpoints from ChatScene.
+- `behavior.yaml`: Rule-based ego-agent baseline using CARLA's `BehaviorAgent`.
+- `aim_bev.yaml`: AIM-BEV policy config using the checkpoint under `safebench/agent/model_ckpt/aim_bev/regular`.
+- `transfuser.yaml`: TransFuser policy config using camera, lidar, and state observations.
+
+Make sure the checkpoint paths inside the selected YAML file exist before launching training or evaluation.
+
+## Train AV-Safe with PPO
+
+AV-safe training is launched with `scripts/start_training_avsafe_ppo.sh`. The script runs route-level AV-safe training sequentially across the configured scenario and route list.
+
+Start one CARLA server first, then run:
+
+```bash
+cd ScenePilot
+bash scripts/start_training_avsafe_ppo.sh \
+  --device cuda:0 \
+  --port 3000 \
+  --tm_port 9000 \
+  --agent_cfg chatscene.yaml \
+  --scenario_cfg ppo.yaml
+```
+
+Useful overrides:
+
+```text
+--avsafe_steps_per_route N        AV-safe update steps per route
+--max_wait_collision_episodes N   Skip a route after N collision-free episodes
+--exp_name NAME                   Experiment name for logs/checkpoints
+--wandb_mode online|offline|disabled
+```
 
 ## Run a Single ScenePilot Training Job
 
@@ -123,7 +157,7 @@ export PYTHONPATH="$PWD:$PYTHONPATH"
 python scripts/run.py \
   --tag 6-4 \
   --mode train_scenario \
-  --agent_cfg autopilot.yaml \
+  --agent_cfg chatscene.yaml \
   --scenario_cfg scenepilot.yaml \
   --scenario_id 6 \
   --route_id 4 \
@@ -185,7 +219,7 @@ The ego agent can be trained with `train_agent` mode:
 cd ScenePilot
 export PYTHONPATH="$PWD:$PYTHONPATH"
 
-python scripts/run.py \
+python scripts/run_train_av.py \
   --tag av-6 \
   --mode train_agent \
   --agent_cfg chatscene.yaml \
@@ -202,7 +236,7 @@ Helper script:
 bash scripts/start_training_av.sh
 ```
 
-## Evaluation
+## Scenario Evaluation
 
 Start CARLA first, then run:
 
@@ -221,7 +255,45 @@ python scripts/run_eval.py \
   --device cuda:0
 ```
 
-For AV-agent checkpoint evaluation:
+Batch scenario evaluation:
+
+```bash
+bash scripts/start_eval_batch.sh \
+  -s "6 7 8" \
+  -a transfuser.yaml \
+  -c king.yaml \
+  -p 3000 \
+  -M 9000
+```
+
+Everything after `--` is forwarded to `scripts/run_eval.py`, for example:
+
+```bash
+bash scripts/start_eval_batch.sh -s "6" -a chatscene.yaml -c scenepilot.yaml -- --route_id 4
+```
+
+## Finetuned Ego-Agent Evaluation
+
+Use `scripts/run_eval_av.py` to evaluate a finetuned ego-agent checkpoint directly:
+
+```bash
+cd ScenePilot
+export PYTHONPATH="$PWD:$PYTHONPATH"
+
+python scripts/run_eval_av.py \
+  --tag eval-av-7 \
+  --agent_cfg chatscene.yaml \
+  --scenario_cfg scenepilot.yaml \
+  --scenario_id 7 \
+  --route_id 4 \
+  --load_dir safebench/agent/model_ckpt/sac_chatscene/finetune/7 \
+  --load_iteration 100 \
+  --port 3000 \
+  --tm_port 9000 \
+  --device cuda:0
+```
+
+To evaluate all checkpoints under a finetune directory, use the batch helper:
 
 ```bash
 bash scripts/start_batch_eval_av.sh
@@ -248,7 +320,7 @@ bash scripts/start_batch_eval_av.sh \
 
 ## Checkpoints
 
-Pretrained checkpoints and related model files will be updated in this Google Drive folder:
+Pretrained checkpoints and related model files:
 
 [ScenePilot Checkpoints](https://drive.google.com/drive/folders/1bUP66-DBsQDn4XJciQS6Ug7oIxWim4bz?usp=drive_link)
 
@@ -273,5 +345,5 @@ This implementation is based on code and ideas from several repositories. We sin
 - [SafeBench](https://github.com/trust-ai/SafeBench)
 - [ChatScene](https://github.com/javyduck/ChatScene)
 - [KING](https://github.com/autonomousvision/king/tree/main)
-- [TransFuser](https://github.com/autonomousvision/transfuser)
+- [TransFuser](https://github.com/autonomousvision/transfuser/tree/cvpr2021)
 - [FREA](https://github.com/CurryChen77/FREA)

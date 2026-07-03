@@ -34,8 +34,8 @@ if __name__ == '__main__':
     parser.add_argument('--max_episode_step', type=int, default=300)
     parser.add_argument('--auto_ego', action='store_true')
     parser.add_argument('--mode', '-m', type=str, default='train_scenario', choices=['train_agent', 'train_scenario', 'eval'])
-    parser.add_argument('--agent_cfg', nargs='*', type=str, default=['autopilot.yaml'])
-    parser.add_argument('--scenario_cfg', nargs='*', type=str, default=['king.yaml'])
+    parser.add_argument('--agent_cfg', nargs='*', type=str, default=['chatscene.yaml'])
+    parser.add_argument('--scenario_cfg', nargs='*', type=str, default=['scenepilot.yaml'])
     parser.add_argument('--continue_agent_training', '-cat', type=bool, default=False)
     parser.add_argument('--continue_scenario_training', '-cst', type=bool, default=False)
 

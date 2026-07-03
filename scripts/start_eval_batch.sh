@@ -20,11 +20,11 @@ Usage: ./scripts/start_eval_batch.sh -s "1 2 3" [-a chatscene.yaml] [-c scenepil
 EOF
 }
 
-scenario_ids=(6)
+scenario_ids=(3 4)
 # agent_cfg="eval_gen.yaml"
-agent_cfg="transfuser.yaml"
+agent_cfg="chatscene.yaml"
 # scenario_cfg="scenepilot.yaml"
-scenario_cfg="king.yaml"
+scenario_cfg="scenepilot.yaml"
 tag_prefix="eval"
 carla_port="3000"
 tm_port="9000"

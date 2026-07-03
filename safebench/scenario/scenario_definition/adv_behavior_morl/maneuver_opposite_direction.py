@@ -40,43 +40,19 @@ class ManeuverOppositeDirection(BasicScenario):
         self.trigger_distance_threshold = 45
         self.ego_max_driven_distance = 200
 
-        self.acc_max = 3.0          # Maximum longitudinal acceleration (m/s^2)
-        self.steering_max = 0.2    # Maximum steering angle in radians
+        self.steering_max = 0.35
+        self._base_speed = 10.0
+        self._speed_scale = 5.0
 
     def convert_actions(self, actions):
         """
-        actions: [acc, steer], from ScenePilot, roughly in [-1, 1]
-        Returns: carla.VehicleControl
+        actions: [speed_delta, steer], from ScenePilot, roughly in [-1, 1].
+        Returns target speed and steering angle.
         """
-        # 1) Unpack action
-        acc   = float(actions[0])   # Normalized longitudinal acceleration
-        steer = float(actions[1])   # Normalized steering
-
-        # 2) Scale to physical range and clip
-        acc   = acc * self.acc_max
-        steer = steer * self.steering_max
-
-        acc   = max(-self.acc_max,      min(self.acc_max,      acc))
+        target_speed = float(actions[0]) * self._speed_scale + self._base_speed
+        steer = float(actions[1]) * self.steering_max
         steer = max(-self.steering_max, min(self.steering_max, steer))
-
-        # 3) Map acceleration to throttle/brake
-        if acc > 0:
-            throttle = np.clip(acc / 3.0, 0.0, 1.0)
-            brake    = 0.0
-            reverse  = False
-        else:
-            # Keep reverse disabled; negative acceleration maps to brake.
-            throttle = 0.0
-            brake    = np.clip(-acc / 8.0, 0.0, 1.0)
-            reverse  = False
-
-        control = carla.VehicleControl(
-            throttle=float(throttle),
-            steer=float(steer),
-            brake=float(brake),
-            reverse=reverse
-        )
-        return control
+        return target_speed, steer
 
     def initialize_actors(self):
         first_actor_waypoint, _ = get_waypoint_in_distance(self._reference_waypoint, self._first_vehicle_location)
@@ -96,8 +72,8 @@ class ManeuverOppositeDirection(BasicScenario):
         self._second_vehicle_location = self._first_vehicle_location + 20
 
     def update_behavior(self, scenario_action):
-        control = self.convert_actions(scenario_action)
-        self.other_actors[1].apply_control(control)
+        target_speed, steer = self.convert_actions(scenario_action)
+        self.scenario_operation.go_straight(target_speed, 1, steering=steer)
 
 
     def check_stop_condition(self):

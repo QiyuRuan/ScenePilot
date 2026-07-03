@@ -49,34 +49,6 @@ adv_reward:
   ttc_horizon:    2.5            # s, values at or below this time are high risk
   desired_headway: 1.8           # s, recommended following headway
 
-# =======================================================================
-# Scenario total reward weights ---------------------------------------------
-# =======================================================================
-scenario_reward:
-  # ───────── weights & penalties ─────────
-  w_peak:        1.0     # Two-bar reward
-  w_adv:         8     # Attack reward weight
-  w_phys:        1.0     # Physical safety reward weight, used only while solving AV-safe
-
-
-
-# =======================================================================
-# Two-bar reward -------------------------------------------------------------
-# =======================================================================
-bars_reward:
-  # ───────── central target ─────────
-  sigma_mid:   1      # Sigma target (m)
-  sigma_band:   0.5     # Gaussian width
-
-  risk_mid:    0.95     # Risk target
-  risk_band:   0.03     # Gaussian width
-  risk_low:    0.85     # Low-risk threshold
-
-  risk_penalty:  0.5     # Penalty size for Risk < risk_low
-  k_risk:       25.0     # Sigmoid slope for Risk < risk_low
-
-  hard_penalty: -1.0     # Physical hard constraint, such as sigma < 0, directly returns -1.
-
 
 
 # =======================================================================
